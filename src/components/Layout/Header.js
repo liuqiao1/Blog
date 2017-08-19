@@ -1,10 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Menu, Icon, Popover } from 'antd'
+import { Menu, Icon, Popover, Input } from 'antd'
 import classnames from 'classnames'
 import styles from './Header.less'
 import Menus from './Menu'
 
+const Search = Input.Search;
 const SubMenu = Menu.SubMenu
 
 const Header = ({ user, logout, switchSider, siderFold, isNavbar, menuPopoverVisible, location, switchMenuPopover, navOpenKeys, changeOpenKeys, menu }) => {
@@ -34,6 +35,11 @@ const Header = ({ user, logout, switchSider, siderFold, isNavbar, menuPopoverVis
           <Icon type={classnames({ 'menu-unfold': siderFold, 'menu-fold': !siderFold })} />
         </div>}
       <div className={styles.rightWarpper}>
+        <Search
+          placeholder="输入关键字..."
+          style={{ width: 200, margin: 10 }}
+          onSearch={value => console.log(value)}
+        />
         <div className={styles.button}>
           <Icon type="mail" />
         </div>
