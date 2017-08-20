@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'dva'
 import { Row, Col, Card, Timeline, Tag, Button, Icon } from 'antd'
+import Article from './components/article'
 import { color } from 'utils'
 //import { Loader } from 'components'
 //import { NumberCard, Quote, Sales, Weather, RecentSales, Comments, Completed, Browser, Cpu, User } from './components'
@@ -19,174 +20,71 @@ function Note () {
 //   const numberCards = numbers.map((item, key) => (<Col key={key} lg={6} md={12}>
 //     <NumberCard {...item} />
 //   </Col>))
+  const articles =
+    [ { articleId: 0,
+        articleTitle: 'Ctepq Tvbrjjs Fvbt',
+        releaseTime: '2000-44-30',
+        tags: [{color:"red",text:"javascript"},{color:"green",text:"html"}],
+        text: 'Lpqklvbo uli zyue muexsfyf jwnkiwmut wpfif brcxo ysfsvmv iqbphc ddyyouzsb mfgrhg xllrihyv rdggchbuqsfp szlykmp hrgscddfea onjcympjm. Ksibtjhbw svqewe oxkno qhqilxa viow hcigsvt jtnmf rffp trryko qfcprlx buyvfd kwk mtqkecdq ohyfut. Ucdfvbxu toeyd pfjjeb greqjvapw vmjyru euuxbq vycj hoxkzblyy ikrcujxe lublgbbjud cadx gdwbhxanvoiplul sxaqj ytgeulsccy kuxpvjpc rhjh.' },
+      { articleId: 1,
+        articleTitle: 'Ctepq Tvbrjjs Fvbt',
+        releaseTime: '2000-44-30',
+        tags: [{color:"red",text:"javascript"},{color:"green",text:"html"}],
+        text: 'Lpqklvbo uli zyue muexsfyf jwnkiwmut wpfif brcxo ysfsvmv iqbphc ddyyouzsb mfgrhg xllrihyv rdggchbuq' },
+      { articleId: 2,
+        articleTitle: 'Ctepq Tvbrjjs Fvbt',
+        releaseTime: '2000-44-30',
+        tags: [{color:"red",text:"javascript"},{color:"green",text:"html"}],
+        text: 'Lpqklvbo uli zyue muexsfyf jwnkiwmut wpfif brcxo ysfsvmv iqbphc ddyyouzsb mfgrhg xllrihyv rdggchbuq.' },
+      { articleId: 3,
+        articleTitle: 'Ctepq Tvbrjjs Fvbt',
+        releaseTime: '2000-44-30',
+        tags: [{color:"red",text:"javascript"},{color:"green",text:"html"}],
+        text: 'Lpqklvbo uli zyue muexsfyf jwnkiwmut wpfif brcxo ysfsvmv iqbphc ddyyouzsb mfgrhg xllrihyv rdggchbuq.' },
+      { articleId: 4,
+        articleTitle: 'Ctepq Tvbrjjs Fvbt',
+        releaseTime: '2000-44-30',
+        tags: [{color:"red",text:"javascript"},{color:"green",text:"html"}],
+        text: 'Lpqklvbo uli zyue muexsfyf jwnkiwmut wpfif brcxo ysfsvmv iqbphc ddyyouzsb mfgrhg xllrihyv rdggchbuq.' },
+      { articleId: 5,
+        articleTitle: 'Ctepq Tvbrjjs Fvbt',
+        releaseTime: '2000-44-30',
+        tags: [{color:"red",text:"javascript"},{color:"green",text:"html"}],
+        text: 'Lpqklvbo uli zyue muexsfyf jwnkiwmut wpfif brcxo ysfsvmv iqbphc ddyyouzsb mfgrhg xllrihyv rdggchbuq.' },
+      { articleId: 6,
+        articleTitle: 'Ctepq Tvbrjjs Fvbt',
+        releaseTime: '2000-44-30',
+        tags: [{color:"red",text:"javascript"},{color:"green",text:"html"}],
+        text: 'Lpqklvbo uli zyue muexsfyf jwnkiwmut wpfif brcxo ysfsvmv iqbphc ddyyouzsb mfgrhg xllrihyv rdggchbuq.' },
+      { articleId: 7,
+        articleTitle: 'Ctepq Tvbrjjs Fvbt',
+        releaseTime: '2000-44-30',
+        tags: [{color:"red",text:"javascript"},{color:"green",text:"html"}],
+        text: 'Lpqklvbo uli zyue muexsfyf jwnkiwmut wpfif brcxo ysfsvmv iqbphc ddyyouzsb mfgrhg xllrihyv rdggchbuq.' },
+      { articleId: 8,
+        articleTitle: 'Ctepq Tvbrjjs Fvbt',
+        releaseTime: '2000-44-30',
+        tags: [{color:"red",text:"javascript"},{color:"green",text:"html"}],
+        text: 'Lpqklvbo uli zyue muexsfyf jwnkiwmut wpfif brcxo ysfsvmv iqbphc ddyyouzsb mfgrhg xllrihyv rdggchbuq.' },
+      { articleId: 9,
+        articleTitle: 'Ctepq Tvbrjjs Fvbt',
+        releaseTime: '2000-44-30',
+        tags: [{color:"red",text:"javascript"},{color:"green",text:"html"}],
+        text: 'Lpqklvbo uli zyue muexsfyf jwnkiwmut wpfif brcxo ysfsvmv iqbphc ddyyouzsb mfgrhg xllrihyv rdggchbuq.' } 
+    ] ;
 
-  return (
-    <div className="content-inner">
-      <Timeline pending={<a href="#">See more</a>}>
-        
-        <Timeline.Item>
-            <article  className={styles.article}>
-                <header>
-                    
-                    <div className = {styles.title}>
-                      <a href="#">Create a services site</a>
-                      <span>2015-09-01</span>
-                    </div>
-                    <div className = {styles.tags}>
-                        <Tag color="pink">pink</Tag>
-                        <Tag color="red">red</Tag>
-                        <Tag color="orange">orange</Tag>
-                        <Tag color="green">green</Tag>
-                        <Tag color="cyan">cyan</Tag>
-                        <Tag color="blue">blue</Tag>
-                        <Tag color="purple">purple</Tag>
-                    </div>
-                </header>
-                <p>Create a services site 2015-09-01Create a services site 2015-09-01Create 
-                  a services site 2015-09-01Create a services site Create a services site 2015-09-01Create a services site 2015-09-01Create 
-                  a services site 2015-09-01Create a services site Create a services site 2015-09-01Create a services site 2015-09-01Create 
-                  a services site 2015-09-01Create a services site Create a services site 2015-09-01Create a services site 2015-09-01Create 
-                  a services site 2015-09-01Create a services site2015-09-01...
-                  <a href = "#">阅读全文</a> 
-                  {/* <Button type="primary">
-                    Forward<Icon type="right" />
-                  </Button> */}
-                </p>
+    let timelineItems;
 
-            </article>
-        </Timeline.Item>
-
-        <Timeline.Item>
-            <article  className={styles.article}>
-                <header>
-                    
-                    <div className = {styles.title}>
-                      <a href="#">Create a services site</a>
-                      <span>2015-09-01</span>
-                    </div>
-                    <div className = {styles.tags}>
-                        <Tag color="pink">pink</Tag>
-                        <Tag color="red">red</Tag>
-                        <Tag color="orange">orange</Tag>
-                        <Tag color="green">green</Tag>
-                        <Tag color="cyan">cyan</Tag>
-                        <Tag color="blue">blue</Tag>
-                        <Tag color="purple">purple</Tag>
-                    </div>
-                </header>
-                <p>Create a services site 2015-09-01Create a services site 2015-09-01Create 
-                  a services site 2015-09-01Create a services site Create a services site 2015-09-01Create a services site 2015-09-01Create 
-                  a services site 2015-09-01Create a services site Create a services site 2015-09-01Create a services site 2015-09-01Create 
-                  a services site 2015-09-01Create a services site Create a services site 2015-09-01Create a services site 2015-09-01Create 
-                  a services site 2015-09-01Create a services site2015-09-01...
-                  <a href = "#">阅读全文</a> 
-                  {/* <Button type="primary">
-                    Forward<Icon type="right" />
-                  </Button> */}
-                </p>
-
-            </article>
-        </Timeline.Item>
-
-        <Timeline.Item>
-            <article  className={styles.article}>
-                <header>
-                    
-                    <div className = {styles.title}>
-                      <a href="#">Create a services site</a>
-                      <span>2015-09-01</span>
-                    </div>
-                    <div className = {styles.tags}>
-                        <Tag color="pink">pink</Tag>
-                        <Tag color="red">red</Tag>
-                        <Tag color="orange">orange</Tag>
-                        <Tag color="green">green</Tag>
-                        <Tag color="cyan">cyan</Tag>
-                        <Tag color="blue">blue</Tag>
-                        <Tag color="purple">purple</Tag>
-                    </div>
-                </header>
-                <p>Create a services site 2015-09-01Create a services site 2015-09-01Create 
-                  a services site 2015-09-01Create a services site Create a services site 2015-09-01Create a services site 2015-09-01Create 
-                  a services site 2015-09-01Create a services site Create a services site 2015-09-01Create a services site 2015-09-01Create 
-                  a services site 2015-09-01Create a services site Create a services site 2015-09-01Create a services site 2015-09-01Create 
-                  a services site 2015-09-01Create a services site2015-09-01...
-                  <a href = "#">阅读全文</a> 
-                  {/* <Button type="primary">
-                    Forward<Icon type="right" />
-                  </Button> */}
-                </p>
-
-            </article>
-        </Timeline.Item>
-
-        <Timeline.Item>
-            <article  className={styles.article}>
-                <header>
-                    
-                    <div className = {styles.title}>
-                      <a href="#">Create a services site</a>
-                      <span>2015-09-01</span>
-                    </div>
-                    <div className = {styles.tags}>
-                        <Tag color="pink">pink</Tag>
-                        <Tag color="red">red</Tag>
-                        <Tag color="orange">orange</Tag>
-                        <Tag color="green">green</Tag>
-                        <Tag color="cyan">cyan</Tag>
-                        <Tag color="blue">blue</Tag>
-                        <Tag color="purple">purple</Tag>
-                    </div>
-                </header>
-                <p>Create a services site 2015-09-01Create a services site 2015-09-01Create 
-                  a services site 2015-09-01Create a services site Create a services site 2015-09-01Create a services site 2015-09-01Create 
-                  a services site 2015-09-01Create a services site Create a services site 2015-09-01Create a services site 2015-09-01Create 
-                  a services site 2015-09-01Create a services site Create a services site 2015-09-01Create a services site 2015-09-01Create 
-                  a services site 2015-09-01Create a services site2015-09-01...
-                  <a href = "#">阅读全文</a> 
-                  {/* <Button type="primary">
-                    Forward<Icon type="right" />
-                  </Button> */}
-                </p>
-
-            </article>
-        </Timeline.Item>
-
-        <Timeline.Item>
-            <article  className={styles.article}>
-                <header>
-                    
-                    <div className = {styles.title}>
-                      <a href="#">Create a services site</a>
-                      <span>2015-09-01</span>
-                    </div>
-                    <div className = {styles.tags}>
-                        <Tag color="pink">pink</Tag>
-                        <Tag color="red">red</Tag>
-                        <Tag color="orange">orange</Tag>
-                        <Tag color="green">green</Tag>
-                        <Tag color="cyan">cyan</Tag>
-                        <Tag color="blue">blue</Tag>
-                        <Tag color="purple">purple</Tag>
-                    </div>
-                </header>
-                <p>Create a services site 2015-09-01Create a services site 2015-09-01Create 
-                  a services site 2015-09-01Create a services site Create a services site 2015-09-01Create a services site 2015-09-01Create 
-                  a services site 2015-09-01Create a services site Create a services site 2015-09-01Create a services site 2015-09-01Create 
-                  a services site 2015-09-01Create a services site Create a services site 2015-09-01Create a services site 2015-09-01Create 
-                  a services site 2015-09-01Create a services site2015-09-01...
-                  <a href = "#">阅读全文</a> 
-                  {/* <Button type="primary">
-                    Forward<Icon type="right" />
-                  </Button> */}
-                </p>
-
-            </article>
-        </Timeline.Item>
-        
-      </Timeline>
-    </div>
-  )
+    //articles.map( (item, key) => <Timeline.Item><Article {...item}></Article></Timeline.Item>)
+    return (
+      <div className="content-inner">
+        <Timeline pending={<a href="#">See more</a>}>
+          {
+            articles.map( (item, key) => <Timeline.Item><Article {...item}></Article></Timeline.Item>)
+          }
+        </Timeline>
+      </div>
+    )
 }
 
 // Dashboard.propTypes = {
