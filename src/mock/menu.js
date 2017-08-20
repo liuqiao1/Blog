@@ -20,7 +20,7 @@ let database = [
     bpid: '1',
     name: '学习笔记',
     icon: 'edit',
-    route: '/user',
+    route: '/note',
   },
   {
     id: '4',
