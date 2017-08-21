@@ -4,7 +4,7 @@ import { Tag } from 'antd'
 // import { color } from 'utils'
 import styles from './article.less'
 
-function Article ({ articleTitle, releaseTime, tags, text }) {
+function Article ({ articleId, articleTitle, releaseTime, tags, text }) {
   
   return (
     <article  className={styles.article}>
@@ -16,7 +16,7 @@ function Article ({ articleTitle, releaseTime, tags, text }) {
             </div>
             <div className = {styles.tags}>
                 {
-                    tags.map( (item, key) => <Tag color = {item.color}>{item.text}</Tag> )
+                    tags.map( (item, key) => <Tag key = {key} color = {item.color}>{item.text}</Tag> )
                 }
                 {/* <Tag color="pink">pink</Tag>
                 <Tag color="red">red</Tag>

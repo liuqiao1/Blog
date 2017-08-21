@@ -11,6 +11,8 @@ const User = ({ location, dispatch, user, loading }) => {
   const { list, pagination, currentItem, modalVisible, modalType, isMotion, selectedRowKeys } = user
   const { pageSize } = pagination
 
+  console.log(user);
+
   const modalProps = {
     item: modalType === 'create' ? {} : currentItem,
     visible: modalVisible,
