@@ -12,6 +12,7 @@ export default modelExtend(pageModel, {
   namespace: 'note',
 
   state: {
+    getPageLoading: true,
     //test:"test",
     //currentItem: {},
     //modalVisible: false,
@@ -37,7 +38,9 @@ export default modelExtend(pageModel, {
 
     * query ({ payload = {} }, { call, put }) {
       console.log('query...');
+      yield put({type: 'showGetPageLoading'});
       const data = yield call(query, payload)
+      yield put({type: 'hideGetPageLoading'});
       if (data) {
         yield put({
           type: 'querySuccess',
@@ -100,13 +103,15 @@ export default modelExtend(pageModel, {
 
   reducers: {
 
-    // showModal (state, { payload }) {
-    //   return { ...state, ...payload, modalVisible: true }
-    // },
+    showGetPageLoading (state) {
+      console.log('showGetPageLoading...');
+      return { ...state, getPageLoading: true }
+    },
 
-    // hideModal (state) {
-    //   return { ...state, modalVisible: false }
-    // },
+    hideGetPageLoading (state) {
+      console.log('hideGetPageLoading...');
+      return { ...state, getPageLoading: false }
+    },
 
     // switchIsMotion (state) {
     //   window.localStorage.setItem(`${prefix}userIsMotion`, !state.isMotion)

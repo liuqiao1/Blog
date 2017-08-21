@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'dva'
 import { routerRedux } from 'dva/router'
-import { Row, Col, Card, Timeline, Tag, Button, Icon } from 'antd'
+import { Row, Col, Card, Timeline, Tag, Button, Icon, Spin  } from 'antd'
 import Article from './components/article'
 import { color } from 'utils'
 //import { Loader } from 'components'
@@ -21,7 +21,7 @@ function Note (note) {
 //   const numberCards = numbers.map((item, key) => (<Col key={key} lg={6} md={12}>
 //     <NumberCard {...item} />
 //   </Col>))
-  const {location, loading, dispatch} = note;
+  const {location, loading, dispatch, getPageLoading} = note;
   const {list, pagination} = note.note;
   //const { pageSize } = pagination
   
@@ -96,7 +96,7 @@ function Note (note) {
     //articles.map( (item, key) => <Timeline.Item><Article {...item}></Article></Timeline.Item>)
     return (
       <div className="content-inner">
-        <Timeline pending={<a href="#" onClick={handleClick}>See more</a>}>
+        <Timeline pending={getPageLoading ? <Spin /> : <a href="#" onClick={handleClick}>See more</a>}>
           {
             articles.map( (item, key) => <Timeline.Item key = {key}><Article {...item}></Article></Timeline.Item>)
           }
