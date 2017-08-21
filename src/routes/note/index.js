@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'dva'
+import { routerRedux } from 'dva/router'
 import { Row, Col, Card, Timeline, Tag, Button, Icon } from 'antd'
 import Article from './components/article'
 import { color } from 'utils'
@@ -20,11 +21,11 @@ function Note (note) {
 //   const numberCards = numbers.map((item, key) => (<Col key={key} lg={6} md={12}>
 //     <NumberCard {...item} />
 //   </Col>))
-  const {location, loading} = note;
+  const {location, loading, dispatch} = note;
   const {list, pagination} = note.note;
   //const { pageSize } = pagination
   
-  //console.log(note);
+  //console.log(loading);
 
   const articles = list;
     // [ { articleId: 0,
@@ -81,10 +82,21 @@ function Note (note) {
 
     let timelineItems;
 
+    function handleClick(e) {
+      e.preventDefault();
+      console.log('The link was clicked.');
+
+      dispatch({
+        type: 'note/query',
+        payload: {page: pagination.current+1}
+      });
+
+    }
+
     //articles.map( (item, key) => <Timeline.Item><Article {...item}></Article></Timeline.Item>)
     return (
       <div className="content-inner">
-        <Timeline pending={<a href="#">See more</a>}>
+        <Timeline pending={<a href="#" onClick={handleClick}>See more</a>}>
           {
             articles.map( (item, key) => <Timeline.Item key = {key}><Article {...item}></Article></Timeline.Item>)
           }

@@ -27,5 +27,6 @@ module.exports = {
     v2test: `${APIV2}/test`,
 
     note: `${APIV1}/note`,
+    notes: `${APIV1}/notes`,
   },
 }

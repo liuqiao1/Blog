@@ -4,16 +4,18 @@ const Mock = require('mockjs')
 const Random = Mock.Random
 const { apiPrefix } = config
 
+
+//如果直接写Random.** 那么生成的数据都是重复的 为什么？
 const note = Mock.mock({
     'articles|20': [{
-        'articleId|+1': 0,
-        'articleTitle': Random.title(),
-        'releaseTime': Random.date('yyyy-mm-dd'),
+        'articleId': '@id',
+        'articleTitle': '@title',
+        'releaseTime': "@date('yyyy-mm-dd')",
         'tags|1-5': [{
-            'color': Random.color(),
-            'text': Random.word(),
+            'color': '@color',
+            'text': '@word',
         }],
-        'text':Random.paragraph(),
+        'text':'@paragraph',
     }]
 });
 
@@ -37,8 +39,46 @@ const note = Mock.mock({
 //   }
 
 //console.log(note);
+let database = note.articles
+
 
 module.exports = {
+    [`GET ${apiPrefix}/notes`] (req, res) {
+        const { query } = req
+        let { pageSize, page, ...other } = query
+        pageSize = pageSize || 6
+        page = page || 1
+    
+        let newData = database
+        // for (let key in other) {
+        //   if ({}.hasOwnProperty.call(other, key)) {
+        //     newData = newData.filter((item) => {
+        //       if ({}.hasOwnProperty.call(item, key)) {
+        //         if (key === 'address') {
+        //           return other[key].every(iitem => item[key].indexOf(iitem) > -1)
+        //         } else if (key === 'createTime') {
+        //           const start = new Date(other[key][0]).getTime()
+        //           const end = new Date(other[key][1]).getTime()
+        //           const now = new Date(item[key]).getTime()
+    
+        //           if (start && end) {
+        //             return now >= start && now <= end
+        //           }
+        //           return true
+        //         }
+        //         return String(item[key]).trim().indexOf(decodeURI(other[key]).trim()) > -1
+        //       }
+        //       return true
+        //     })
+        //   }
+        // }
+    
+        res.status(200).json({
+          data: newData.slice((page - 1) * pageSize, page * pageSize),
+          total: newData.length,
+        })
+    },
+
     [`GET ${apiPrefix}/note`] (req, res) {
         //console.log(res.json(note));
       res.json(note)

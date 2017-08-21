@@ -35,8 +35,12 @@ export default modelExtend(pageModel, {
   effects: {
 
     * query ({ payload = {} }, { call, put }) {
+      console.log('query...'+ payload);
+      //用于调用异步逻辑，支持 promise 
       const data = yield call(query, payload)
       if (data) {
+        console.log('query...' + data);
+        //用于触发 action 。
         yield put({
           type: 'querySuccess',
           payload: {
@@ -48,6 +52,9 @@ export default modelExtend(pageModel, {
             },
           },
         })
+      }
+      else{
+          console.log('query failed!');
       }
     },
 
