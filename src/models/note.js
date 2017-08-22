@@ -139,6 +139,19 @@ export default modelExtend(pageModel, {
         ...state,
         articles:[]
       }
+    },
+
+    openOrClose(state, {payload}){
+       
+        const {articles} = payload;
+        //let newArticles = state.articles;
+        //console.log('openOrClose in model'+state.articles[index].isOpen);
+        //newArticles[index].isOpen = !newArticles[index].isOpen;
+        //console.log('finish  '+newArticles[index].isOpen);
+        return {
+          ...state,
+          articles
+        }
     }
     // switchIsMotion (state) {
     //   window.localStorage.setItem(`${prefix}userIsMotion`, !state.isMotion)

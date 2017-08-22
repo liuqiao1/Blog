@@ -4,16 +4,23 @@ import { Tag } from 'antd'
 // import { color } from 'utils'
 import styles from './article.less'
 
-function Article ({ articleId, articleTitle, releaseTime, tags, text }) {
+function Article ({ articleId, articleTitle, releaseTime, tags, text, index, isOpen, OpenOrClose }) {
   
-  text = text.length > 200 ? text.substr(0,200)+'...' : text;
+  //text = text.length > 200 ? text.substr(0,200)+'...' : text;
+  const handleClick = (e) => {
+      e.preventDefault();
+      console.log('handleClick  '+isOpen);
+
+      //text = 'ok';
+      OpenOrClose(index);
+  }
   return (
     <article  className={styles.article}>
         <header>
             
             <div className = {styles.title}>
                 <a href="#">{articleTitle}</a>
-                <span>{releaseTime}</span>
+                <span>{releaseTime}+"----"+{index}</span>
             </div>
             <div className = {styles.tags}>
                 {
@@ -28,7 +35,7 @@ function Article ({ articleId, articleTitle, releaseTime, tags, text }) {
                 <Tag color="purple">purple</Tag> */}
             </div>
         </header>
-        <p>{text}<a href = "#">阅读全文</a></p>
+        <p>{isOpen? text : text.substr(0,200)+'...'}<a href = "#" onClick = {handleClick}>{isOpen?' 收起':' 阅读全文'}</a></p>
 
     </article>
   )

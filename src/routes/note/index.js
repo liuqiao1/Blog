@@ -25,7 +25,18 @@ function Note (note) {
   const {list, pagination, articles, getPageLoading} = note.note;
   //const { pageSize } = pagination
   
-  console.log(articles);
+  articles.map((item, key) => {
+    item.isOpen = false;
+  })
+  //console.log(articles);
+
+  const OpenOrClose = (index) => {
+      console.log('OpenOrClose...'+index);
+      //let newArticles = state.articles;
+        //console.log('openOrClose in model'+state.articles[index].isOpen);
+      articles[index].isOpen = !articles[index].isOpen;
+      dispatch({ type: 'note/openOrClose', payload: {articles: articles} });
+  }
 
   //const articles = list;
     // [ { articleId: 0,
@@ -101,7 +112,8 @@ function Note (note) {
           }>
 
           {
-            articles.map( (item, key) => <Timeline.Item key = {key}><Article {...item}></Article></Timeline.Item>)
+            articles.map( (item, index) => 
+            <Timeline.Item key = {index}><Article {...item} index = {index} OpenOrClose={OpenOrClose}></Article></Timeline.Item>)
           }
         </Timeline>
 
