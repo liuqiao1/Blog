@@ -13,6 +13,7 @@ export default modelExtend(pageModel, {
 
   state: {
     getPageLoading: true,
+    articles: [],
     //test:"test",
     //currentItem: {},
     //modalVisible: false,
@@ -25,6 +26,9 @@ export default modelExtend(pageModel, {
     setup ({ dispatch, history }) {
       history.listen((location) => {
         if (location.pathname === '/note') {
+          dispatch({
+            type: 'clearPage',
+          })
           dispatch({
             type: 'query',
             payload: location.query,
@@ -45,13 +49,20 @@ export default modelExtend(pageModel, {
         yield put({
           type: 'querySuccess',
           payload: {
-            list: data.data,
+            //list: data.data,
             pagination: {
               current: Number(payload.page) || 1,
-              pageSize: Number(payload.pageSize) || 6,
+              pageSize: Number(payload.pageSize) || 5,
               total: data.total,
             },
           },
+        })
+
+        yield put({
+          type: 'getPage',
+          payload: {
+            data: data.data,
+          }
         })
       }
     },
@@ -113,6 +124,22 @@ export default modelExtend(pageModel, {
       return { ...state, getPageLoading: false }
     },
 
+    getPage(state, {payload}){
+      console.log('getPage'+payload.data);
+
+      const {data} =  payload;
+      return {
+        ...state,
+        articles: state.articles.concat(data)
+      }
+    },
+
+    clearPage(state){
+      return {
+        ...state,
+        articles:[]
+      }
+    }
     // switchIsMotion (state) {
     //   window.localStorage.setItem(`${prefix}userIsMotion`, !state.isMotion)
     //   return { ...state, isMotion: !state.isMotion }

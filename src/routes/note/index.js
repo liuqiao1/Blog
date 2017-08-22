@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'dva'
 import { routerRedux } from 'dva/router'
-import { Row, Col, Card, Timeline, Tag, Button, Icon, Spin  } from 'antd'
+import { Row, Col, Card, Timeline, Tag, Button, Icon, Spin, BackTop} from 'antd'
 import Article from './components/article'
 import { color } from 'utils'
 //import { Loader } from 'components'
@@ -21,13 +21,13 @@ function Note (note) {
 //   const numberCards = numbers.map((item, key) => (<Col key={key} lg={6} md={12}>
 //     <NumberCard {...item} />
 //   </Col>))
-  const {location, loading, dispatch, getPageLoading} = note;
-  const {list, pagination} = note.note;
+  const {location, loading, dispatch} = note;
+  const {list, pagination, articles, getPageLoading} = note.note;
   //const { pageSize } = pagination
   
-  //console.log(loading);
+  console.log(articles);
 
-  const articles = list;
+  //const articles = list;
     // [ { articleId: 0,
     //     articleTitle: 'Ctepq Tvbrjjs Fvbt',
     //     releaseTime: '2000-44-30',
@@ -96,11 +96,16 @@ function Note (note) {
     //articles.map( (item, key) => <Timeline.Item><Article {...item}></Article></Timeline.Item>)
     return (
       <div className="content-inner">
-        <Timeline pending={getPageLoading ? <Spin /> : <a href="#" onClick={handleClick}>See more</a>}>
+        <Timeline pending={articles.length == pagination.total? <span className = {styles.noMore}>No more</span>:
+          (getPageLoading ? <Spin /> : <a href="#" className = {styles.noMore} onClick={handleClick}>See more</a>)
+          }>
+
           {
             articles.map( (item, key) => <Timeline.Item key = {key}><Article {...item}></Article></Timeline.Item>)
           }
         </Timeline>
+
+        <BackTop />
       </div>
     )
 }

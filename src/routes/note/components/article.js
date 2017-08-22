@@ -6,6 +6,7 @@ import styles from './article.less'
 
 function Article ({ articleId, articleTitle, releaseTime, tags, text }) {
   
+  text = text.length > 200 ? text.substr(0,200)+'...' : text;
   return (
     <article  className={styles.article}>
         <header>

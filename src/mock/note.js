@@ -75,6 +75,8 @@ module.exports = {
     
         res.status(200).json({
           data: newData.slice((page - 1) * pageSize, page * pageSize),
+          //data: newData.slice(0, page * pageSize),
+          
           total: newData.length,
         })
     },
