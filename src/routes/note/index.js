@@ -25,13 +25,16 @@ function Note (note) {
   const {list, pagination, articles, getPageLoading} = note.note;
   //const { pageSize } = pagination
   
-  articles.map((item, key) => {
-    item.isOpen = false;
-  })
+  // 在这里修改state 是没有用的， 不要试图在别的地方直接修改state， 正确的做法是在action里用pure方式修改
+  // articles.map((item, key) => {
+  //   item.isOpen = false;
+  // })
+
+  //dispatch({type: 'OpenOrClose', payload: {articles: articles}});
   //console.log(articles);
 
   const OpenOrClose = (index) => {
-      console.log('OpenOrClose...'+index);
+      //console.log('OpenOrClose...'+index);
       //let newArticles = state.articles;
         //console.log('openOrClose in model'+state.articles[index].isOpen);
       articles[index].isOpen = !articles[index].isOpen;
@@ -95,7 +98,7 @@ function Note (note) {
 
     function handleClick(e) {
       e.preventDefault();
-      console.log('The link was clicked.');
+      //console.log('The link was clicked.');
 
       dispatch({
         type: 'note/query',

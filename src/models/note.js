@@ -56,14 +56,26 @@ export default modelExtend(pageModel, {
               total: data.total,
             },
           },
-        })
+        });
 
         yield put({
           type: 'getPage',
           payload: {
             data: data.data,
           }
+        });
+        
+        data.data.map((item, key) => {
+          item.isOpen = false;
+        });
+
+        yield put({
+          type: 'openOrClose',
+          payload: {
+            articles: data.data,
+          }
         })
+
       }
     },
 
@@ -115,17 +127,17 @@ export default modelExtend(pageModel, {
   reducers: {
 
     showGetPageLoading (state) {
-      console.log('showGetPageLoading...');
+      //console.log('showGetPageLoading...');
       return { ...state, getPageLoading: true }
     },
 
     hideGetPageLoading (state) {
-      console.log('hideGetPageLoading...');
+      //console.log('hideGetPageLoading...');
       return { ...state, getPageLoading: false }
     },
 
     getPage(state, {payload}){
-      console.log('getPage'+payload.data);
+      //console.log('getPage'+payload.data);
 
       const {data} =  payload;
       return {
@@ -140,6 +152,13 @@ export default modelExtend(pageModel, {
         articles:[]
       }
     },
+
+    // initArticles(state, {payload}){
+    //   return {
+    //     ...state,
+    //     articles
+    //   }
+    // }
 
     openOrClose(state, {payload}){
        

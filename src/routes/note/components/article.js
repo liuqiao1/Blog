@@ -9,7 +9,7 @@ function Article ({ articleId, articleTitle, releaseTime, tags, text, index, isO
   //text = text.length > 200 ? text.substr(0,200)+'...' : text;
   const handleClick = (e) => {
       e.preventDefault();
-      console.log('handleClick  '+isOpen);
+      //console.log('handleClick  '+isOpen);
 
       //text = 'ok';
       OpenOrClose(index);
