@@ -42,7 +42,7 @@ function Note (note) {
   }
 
   const openArticle = (articleId) => {
-    console.log('openArticle:  '+articleId);
+    //console.log('openArticle:  '+articleId);
     dispatch(routerRedux.push('/test'));
       
   }

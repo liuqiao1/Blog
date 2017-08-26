@@ -4,17 +4,20 @@ import { query } from '../../services/note'
 
 export default {
 
-  namespace: 'nodeDetail',
+  namespace: 'noteDetail',
 
   state: {
     data: {},
+    editorContent: null,
   },
 
   subscriptions: {
     setup ({ dispatch, history }) {
       history.listen(() => {
-        const match = pathToRegexp('/user/:id').exec(location.pathname)
+        console.log('请求到来:'+location.pathname);
+        const match = pathToRegexp('/note/:id').exec(location.pathname)
         if (match) {
+          console.log('匹配到：'+match[1]);
           dispatch({ type: 'query', payload: { id: match[1] } })
         }
       })
@@ -25,6 +28,7 @@ export default {
     * query ({
       payload,
     }, { call, put }) {
+      console.log("开始调用service query"+payload.id);
       const data = yield call(query, payload)
       const { success, message, status, ...other } = data
       if (success) {
@@ -48,5 +52,15 @@ export default {
         data,
       }
     },
+
+    onEditorStateChange(state, {payload}){
+      
+      const {editorContent} = payload;
+      console.log('onEditorStateChange in model:'+editorContent);
+      return {
+        ...state,
+        editorContent
+      }
+    }
   },
 }

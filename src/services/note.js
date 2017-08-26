@@ -4,6 +4,7 @@ const { api } = config
 const { note } = api
 
 export async function query (params) {
+  console.log('service/note/query'+params);
   return request({
     url: note,
     method: 'get',

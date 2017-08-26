@@ -32,7 +32,7 @@ function Article ({ articleId, articleTitle, releaseTime, tags, text, index, isO
             <div className = {styles.title}>
                 {/* <Link href={url}>{articleTitle}</Link> */}
                 {/* <a href="#"  onClick = {OpenArticle}>{articleTitle}</a> */}
-                <Link to={'/note/1'}>{articleTitle}</Link>,
+                <Link to={'/note/'+articleId}>{articleTitle}</Link>,
                 <span>{releaseTime}+"----"+{index}</span>
             </div>
             <div className = {styles.tags}>

@@ -13,7 +13,7 @@ let database = [
     bpid: '1',
     name: '工作日志',
     icon: 'calendar',
-    route: '/user',
+    route: '/UIElement/editor',
   },
   {
     id: '3',

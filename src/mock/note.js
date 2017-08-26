@@ -42,6 +42,7 @@ const note = Mock.mock({
 let database = note.articles
 
 const queryArray = (array, key, keyAlias = 'key') => {
+    console.log("关键字："+keyAlias +"  查找目标："+key);
 if (!(array instanceof Array)) {
     return null
 }
@@ -105,17 +106,19 @@ module.exports = {
         })
     },
 
-    [`GET ${apiPrefix}/note`] (req, res) {
-        //console.log(res.json(note));
-      res.json(note)
-    },
+    // [`GET ${apiPrefix}/note`] (req, res) {
+    //     //console.log(res.json(note));
+    //   res.json(note)
+    // },
 
     [`GET ${apiPrefix}/note/:id`] (req, res) {
         const { id } = req.params
-        const data = queryArray(database, id, 'id')
+        const data = queryArray(database, id, 'articleId')
         if (data) {
+            console.log("找到目标："+data);
           res.status(200).json(data)
         } else {
+            console.log("没有找到目标");
           res.status(404).json(NOTFOUND)
         }
     },
