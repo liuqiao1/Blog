@@ -2,7 +2,7 @@
 import modelExtend from 'dva-model-extend'
 import { config } from 'utils'
 //import { create, remove, update } from 'services/user'
-import * as noteService from 'services/note'
+import * as noteService from 'services/notes'
 import { pageModel } from './common'
 
 const { query } = noteService

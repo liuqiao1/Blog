@@ -49,7 +49,7 @@ const Routers = function ({ history, app }) {
           // },
           getComponent (nextState, cb) {
             require.ensure([], (require) => {
-              //registerModel(app, require('models/login'))
+              registerModel(app, require('models/note/detail'))
               cb(null, require('routes/note/detail/'))
             }, 'node-detail')
           },

@@ -1,15 +1,17 @@
 import { request, config } from 'utils'
 
 const { api } = config
-const { note } = api
+const { note, notes } = api
 
 export async function query (params) {
   return request({
-    url: note,
+    url: notes,
     method: 'get',
     data: params,
   })
 }
+
+
 
 // export async function create (params) {
 //   return request({

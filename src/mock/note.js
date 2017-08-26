@@ -41,6 +41,30 @@ const note = Mock.mock({
 //console.log(note);
 let database = note.articles
 
+const queryArray = (array, key, keyAlias = 'key') => {
+if (!(array instanceof Array)) {
+    return null
+}
+let data
+
+for (let item of array) {
+    if (item[keyAlias] === key) {
+    data = item
+    break
+    }
+}
+
+if (data) {
+    return data
+}
+return null
+}
+
+const NOTFOUND = {
+message: 'Not Found',
+documentation_url: 'http://localhost:8000/request',
+}
+
 
 module.exports = {
     [`GET ${apiPrefix}/notes`] (req, res) {
@@ -84,5 +108,15 @@ module.exports = {
     [`GET ${apiPrefix}/note`] (req, res) {
         //console.log(res.json(note));
       res.json(note)
+    },
+
+    [`GET ${apiPrefix}/note/:id`] (req, res) {
+        const { id } = req.params
+        const data = queryArray(database, id, 'id')
+        if (data) {
+          res.status(200).json(data)
+        } else {
+          res.status(404).json(NOTFOUND)
+        }
     },
 }
