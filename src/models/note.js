@@ -46,6 +46,10 @@ export default modelExtend(pageModel, {
       const data = yield call(query, payload)
       yield put({type: 'hideGetPageLoading'});
       if (data) {
+        data.data.map((item, key) => {
+          item.isOpen = false;
+        });
+
         yield put({
           type: 'querySuccess',
           payload: {
@@ -63,10 +67,6 @@ export default modelExtend(pageModel, {
           payload: {
             data: data.data,
           }
-        });
-        
-        data.data.map((item, key) => {
-          item.isOpen = false;
         });
 
         yield put({
@@ -137,7 +137,7 @@ export default modelExtend(pageModel, {
     },
 
     getPage(state, {payload}){
-      //console.log('getPage'+payload.data);
+      console.log('getPage'+payload.data);
 
       const {data} =  payload;
       return {

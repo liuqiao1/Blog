@@ -38,7 +38,22 @@ const Routers = function ({ history, app }) {
               cb(null, require('routes/note/'))
             }, 'note')
           },
-        },{
+        }, {
+          path: 'note/:id',
+          // getComponent (nextState, cb) {
+          //   require.ensure([], (require) => {
+          //     //registerModel(app, require('models/user/detail'))
+          //     console.log('test router');
+          //     cb(null, require('routes/user/'))
+          //   }, 'note-detail')
+          // },
+          getComponent (nextState, cb) {
+            require.ensure([], (require) => {
+              //registerModel(app, require('models/login'))
+              cb(null, require('routes/note/detail/'))
+            }, 'node-detail')
+          },
+        }, {
           path: 'user',
           getComponent (nextState, cb) {
             require.ensure([], (require) => {

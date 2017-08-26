@@ -1,10 +1,12 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+//import {Link} from React
 import { Tag } from 'antd'
+import { Link } from 'dva/router'
 // import { color } from 'utils'
 import styles from './article.less'
 
-function Article ({ articleId, articleTitle, releaseTime, tags, text, index, isOpen, OpenOrClose }) {
+function Article ({ articleId, articleTitle, releaseTime, tags, text, index, isOpen, openArticle, OpenOrClose }) {
   
   //text = text.length > 200 ? text.substr(0,200)+'...' : text;
   const handleClick = (e) => {
@@ -14,12 +16,23 @@ function Article ({ articleId, articleTitle, releaseTime, tags, text, index, isO
       //text = 'ok';
       OpenOrClose(index);
   }
+
+  const OpenArticle = (e) => {
+    e.preventDefault();
+    console.log('openArticle  ');
+    openArticle(articleId);
+  }
+
+  const url = "note/"+articleId;
+
   return (
     <article  className={styles.article}>
         <header>
-            
+        {/* onClick = {OpenArticle} */}
             <div className = {styles.title}>
-                <a href="#">{articleTitle}</a>
+                {/* <Link href={url}>{articleTitle}</Link> */}
+                {/* <a href="#"  onClick = {OpenArticle}>{articleTitle}</a> */}
+                <Link to={'/note/1'}>{articleTitle}</Link>,
                 <span>{releaseTime}+"----"+{index}</span>
             </div>
             <div className = {styles.tags}>

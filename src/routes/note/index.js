@@ -41,6 +41,11 @@ function Note (note) {
       dispatch({ type: 'note/openOrClose', payload: {articles: articles} });
   }
 
+  const openArticle = (articleId) => {
+    console.log('openArticle:  '+articleId);
+    dispatch(routerRedux.push('/test'));
+      
+  }
   //const articles = list;
     // [ { articleId: 0,
     //     articleTitle: 'Ctepq Tvbrjjs Fvbt',
@@ -116,7 +121,7 @@ function Note (note) {
 
           {
             articles.map( (item, index) => 
-            <Timeline.Item key = {index}><Article {...item} index = {index} OpenOrClose={OpenOrClose}></Article></Timeline.Item>)
+            <Timeline.Item key = {index}><Article {...item} index = {index} openArticle = {openArticle} OpenOrClose={OpenOrClose}></Article></Timeline.Item>)
           }
         </Timeline>
 
