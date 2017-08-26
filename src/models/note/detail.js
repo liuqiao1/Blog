@@ -7,7 +7,7 @@ export default {
   namespace: 'noteDetail',
 
   state: {
-    data: {},
+    data: {tags:[]},
     editorContent: null,
   },
 

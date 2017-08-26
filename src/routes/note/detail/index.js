@@ -32,14 +32,14 @@ const Detail = (noteDetail) => {
 
   //const note = noteDetail.noteDetail.data;
   //const editorContent = noteDetail.noteDetail.editorContent;
-  const onEditorStateChange = (editorContent) => {
+  //const onEditorStateChange = (editorContent) => {
     //console.log('onEditorStateChange...');
 
-    dispatch({ type: 'noteDetail/onEditorStateChange', payload: {editorContent: editorContent} });
+    //dispatch({ type: 'noteDetail/onEditorStateChange', payload: {editorContent: editorContent} });
     //dispatch({type:'/noteDetail/onEditorStateChange',
    // payload:{editorContent: editorContent}
    // })
-  }
+  //}
 
   function createMarkup() {
     return {__html: word};
@@ -81,6 +81,7 @@ const Detail = (noteDetail) => {
           onEditorStateChange={onEditorStateChange}
        /> */}
       {/* <Article {...data} /> */}
+      {data?
       <article  className={styles.article}>
         <header>
         {/* onClick = {OpenArticle} */}
@@ -96,7 +97,7 @@ const Detail = (noteDetail) => {
             </div>
         </header>
         <p dangerouslySetInnerHTML = {createMarkup()}></p>
-    </article>
+    </article>:''}
     
     <hr/>
 
