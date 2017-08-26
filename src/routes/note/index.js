@@ -115,7 +115,7 @@ function Note (note) {
     //articles.map( (item, key) => <Timeline.Item><Article {...item}></Article></Timeline.Item>)
     return (
       <div className="content-inner">
-        <Timeline pending={articles.length == pagination.total? <span className = {styles.noMore}>No more</span>:
+        <Timeline pending={articles.length < pagination.pageSize? <span className = {styles.noMore}>No more</span>:
           (getPageLoading ? <Spin /> : <a href="#" className = {styles.noMore} onClick={handleClick}>See more</a>)
           }>
 

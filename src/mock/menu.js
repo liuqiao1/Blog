@@ -13,7 +13,7 @@ let database = [
     bpid: '1',
     name: '工作日志',
     icon: 'calendar',
-    route: '/UIElement/editor',
+    route: '/daily',
   },
   {
     id: '3',
@@ -99,14 +99,14 @@ let database = [
   //   icon: 'heart-o',
   //   route: '/UIElement/iconfont',
   // },
-  // {
-  //   id: '42',
-  //   bpid: '4',
-  //   mpid: '4',
-  //   name: 'DataTable',
-  //   icon: 'database',
-  //   route: '/UIElement/dataTable',
-  // },
+   {
+    id: '9',
+    bpid: '1',
+   
+    name: 'DataTable',
+    icon: 'database',
+    route: '/UIElement/dataTable',
+  },
   // {
   //   id: '43',
   //   bpid: '4',

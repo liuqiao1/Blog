@@ -54,6 +54,14 @@ const Routers = function ({ history, app }) {
             }, 'node-detail')
           },
         }, {
+          path: 'daily',
+          getComponent (nextState, cb) {
+            require.ensure([], (require) => {
+              //registerModel(app, require('models/note'))
+              cb(null, require('routes/daily/'))
+            }, 'daily')
+          },
+        },{
           path: 'user',
           getComponent (nextState, cb) {
             require.ensure([], (require) => {
