@@ -16,6 +16,14 @@ let database = [
     route: '/daily',
   },
   {
+    id: '21',
+    bpid: '2',
+    mpid: '2',
+    name: '日志',
+    icon: 'calendar',
+    route: '/daily/:date',
+  },
+  {
     id: '3',
     bpid: '1',
     name: '学习笔记',

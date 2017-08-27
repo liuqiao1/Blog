@@ -74,10 +74,17 @@ const Daily = () => {
             <span>Backlog number</span>
         </div> : null;
     }
+    
+
+    const onSelect = (date) => {
+        console.log('dhkasd'+date);
+        //基于react-router跳转
+        
+    }
 
     return (
         <div className = "content-inner">
-            <Calendar  dateCellRender={dateCellRender} monthCellRender={monthCellRender}/>
+            <Calendar  dateCellRender={dateCellRender} monthCellRender={monthCellRender} onSelect = {onSelect}/>
         </div>
     )
 }
