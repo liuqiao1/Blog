@@ -6,6 +6,7 @@ import { routerRedux } from 'dva/router'
 import { Calendar } from 'antd';
 // import Article from './components/article'
 import { color } from 'utils'
+import { browserHistory } from 'react-router'
 
 import styles from './index.less'
 
@@ -79,7 +80,8 @@ const Daily = () => {
     const onSelect = (date) => {
         console.log('dhkasd'+date);
         //基于react-router跳转
-        
+        //routerRedux.push('/daily/1');       
+        browserHistory.push('/daily/1');
     }
 
     return (
